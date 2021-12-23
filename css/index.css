@@ -1,0 +1,99 @@
+body {
+	font-family: 'Montserrat', serif;
+	font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    font-family: 'Montserrat', serif;
+}
+
+.context {
+    width: 100%;
+    height: 20vh;
+}
+
+.chart-container {
+    width: 100vw;
+    height: 80vh;
+}
+.chart {
+    width: 85%;
+    height: 100%;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(120deg, #73d4db 0%, #66a6ff 100%);
+
+}
+
+.section-home {
+    flex-direction: column;
+}
+.logo {
+    user-select: none;
+}
+.title {
+    padding-top: 15px;
+    color: white;
+}
+
+.description {
+    padding: 0 20%;
+    color: white;
+    text-align: center;
+    line-height: 1.5;
+}
+.description h4 {
+    padding-bottom: 35px;
+}
+
+
+
+.section-ecommerce {
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.section-3 {
+    background-image: linear-gradient(120deg, #cd9cf2 0%, #e4bcff 100%);
+}
+
+.section-4 {
+    background-image: linear-gradient(128deg,#fc40ff,#543fff);
+}
+
+.section-5 {
+    background-image: linear-gradient(128deg,#ff9a3f,#ff4b40);
+}
+
+
+.fp-prev {
+    left: 45px !important;
+}
+.fp-next {
+    right: 45px !important;
+}
+
+/* .footer {
+    width: 100%;
+    height: 100vh;
+} */
+
+
+/* Utility Classes */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.flex-column {
+    flex-direction: column;
+}
