@@ -1,6 +1,7 @@
 const ecommerceChartEle = document.getElementById('ecommerceChart')
 
 const resizeCharts = () => {
+  // TODO fix resize listener
   console.log('resize chart')
   ecommerceChart.resize({
     width: ecommerceChartEle.clientWidth,
