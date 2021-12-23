@@ -1,20 +1,44 @@
-const ecommerceChart = echarts.init(document.getElementById('ecommerceChart'));
+const ecommerceChartEle = document.getElementById('ecommerceChart')
 
+const resizeCharts = () => {
+  console.log('resize chart')
+  ecommerceChart.resize({
+    width: ecommerceChartEle.clientWidth,
+    height: ecommerceChartEle.clientHeight,
+  });
+}
+
+let resizeTimeout;
+window.onresize = function () {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(resizeCharts, 500);
+};
+
+
+
+const setChartSizes = () => {
+  ecommerceChart = echarts.init(ecommerceChartEle, null, {
+    width: ecommerceChartEle.clientWidth,
+    height: ecommerceChartEle.clientHeight,
+  });
+}
+
+window.addEventListener('load', setChartSizes);
 
 new fullpage('#fullpage', {
   licenseKey: '0504859B-A2D74649-9F0A4143-79C3F96A',
   navigation: true,
   navigationPosition: 'right',
   navigationTooltips: ['Home', 'Overview', 'Ecommerce', 'Software', 'Payments', 'Internet'],
-  anchors:['home', 'overview', 'ecommerce', 'software', 'payments', 'internet'],
+  anchors: ['home', 'overview', 'ecommerce', 'software', 'payments', 'internet'],
   scrollingSpeed: 1000,
   controlArrows: true,
-  onLeave: function(origin, destination, direction){
+  onLeave: function (origin, destination, direction) {
     if (destination.anchor === 'ecommerce') {
       ecommerceChart.setOption(ecommerceChartOptions);
     }
 
-	}
+  }
 });
 
 
@@ -25,7 +49,9 @@ const ecommerceChartOptions = {
     text: 'GMV ($M)',
     textStyle: {
       fontFamily: 'Montserrat'
-    }
+    },
+    top: 0,
+    left: 0,
   },
   tooltip: {
     trigger: 'axis',
@@ -34,15 +60,21 @@ const ecommerceChartOptions = {
     }
   },
   legend: {
-    data: ['AMZN (Ex. AWS)', 'SHOP', 'SE (Ex. Garena)', 'DASH', 'HFG', ],
+    data: ['AMZN (Ex. AWS)', 'SHOP', 'SE (Ex. Garena)', 'DASH', 'HFG',],
     textStyle: {
       fontFamily: 'Montserrat'
-    }
+    },
+    top: 30,
+    left: 0,
+  },
+  grid: {
+    top: 110,
+    left: 55,
   },
   xAxis: {
     type: 'category',
     boundaryGap: false,
-    data: [	'Q1 18', 'Q2 18', 'Q3 18', 'Q4 18', 'Q1 19', 'Q2 19', 'Q3 19', 'Q4 19', 'Q1 20', 'Q2 20', 'Q3 20', 'Q4 20', 'Q1 21', 'Q2 21', 'Q3 21', 'Q4 21 (Est.)', ],
+    data: ['Q1 18', 'Q2 18', 'Q3 18', 'Q4 18', 'Q1 19', 'Q2 19', 'Q3 19', 'Q4 19', 'Q1 20', 'Q2 20', 'Q3 20', 'Q4 20', 'Q1 21', 'Q2 21', 'Q3 21', 'Q4 21 (Est.)',],
     axisLabel: {
       fontFamily: 'Montserrat'
     }
@@ -88,71 +120,65 @@ const ecommerceChartOptions = {
 };
 
 
-const resizeCharts = () => {
-  ecommerceChart.resize();
-}
-
-window.addEventListener('resize', resizeCharts);
-
 
 
 
 particlesJS('particles',
-	{
-		"particles": {
-			"number": {
-				"value": 55,
-				"density": {
-					"enable": true,
-					"value_area": 800
-				}
-			},
-			"color": {
-				"value": "#ffffff"
-			},
-			"shape": {
-				"type": "circle",
-			},
-			"opacity": {
-				"value": 0.4,
-				"random": false,
-			},
-			"size": {
-				"value": 1,
-				"random": false,
-			},
-			"line_linked": {
-				"enable": true,
-				"distance": 150,
-				"color": "#ffffff",
-				"opacity": 0.3,
-				"width": 1
-			},
-			"move": {
-				"enable": true,
-				"speed": 1,
-				"direction": "none",
-				"random": false,
-				"straight": false,
-				"out_mode": "out",
-			}
-		},
-		"interactivity": {
-			"detect_on": "canvas",
-			"events": {
-				"onclick": {
-					"enable": true,
-					"mode": "push"
-				},
-				"resize": true
-			},
-			"modes": {
-				"push": {
-					"particles_nb": 4
-				}
-			}
-		},
-		"retina_detect": true,
-	}
+  {
+    "particles": {
+      "number": {
+        "value": 55,
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": "#ffffff"
+      },
+      "shape": {
+        "type": "circle",
+      },
+      "opacity": {
+        "value": 0.4,
+        "random": false,
+      },
+      "size": {
+        "value": 1,
+        "random": false,
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.3,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 1,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onclick": {
+          "enable": true,
+          "mode": "push"
+        },
+        "resize": true
+      },
+      "modes": {
+        "push": {
+          "particles_nb": 4
+        }
+      }
+    },
+    "retina_detect": true,
+  }
 );
 
